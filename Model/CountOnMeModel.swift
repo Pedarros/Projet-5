@@ -1,6 +1,12 @@
  
- class calcul {
+ class CountOnMeModel {
 
+    weak var delegate: ModelDelegate?
+    func downloadData() {
+        let data = "Network request information."
+        delegate?.didReceiveData(data)
+    }
+    
 var elements: [String] {
 return textView.text.split(separator: " ").map { "\($0)" }
     }
@@ -40,4 +46,46 @@ return textView.text.split(separator: " ").map { "\($0)" }
     operationsToReduce = Array(operationsToReduce.dropFirst(3))
     operationsToReduce.insert("\(result)", at: 0)
     }
- }
+    
+    func Multiply (a: Int, b: Int) -> Int {
+        return a * b
+    }
+    func Divide (a: Int, b: Int) -> Int {
+        return a / b
+    }
+    func Plus (a: Int, b: Int) -> Int {
+        return a + b
+    }
+    func Minus (a: Int, b: Int) -> Int {
+        return a - b
+    }
+    
+    var result : Int = 0
+    
+    func Reset() {
+        result = 0
+    }
+    
+    func Equal() {
+        if Multiply(a: <#T##Int#>, b: <#T##Int#>) = String(a * b)
+    }
+    
+    func Operands (a: Float, b: Float) -> Float {
+        if Multiply(a: <#T##Int#>, b: <#T##Int#>) {
+            
+        }
+    
+    }
+    /*
+    enum Operation {
+        case minus
+        case plus
+        case multiply
+        case divide
+        }
+    
+    if minus {
+    */
+    }
+ 
+ 

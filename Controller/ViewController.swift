@@ -12,6 +12,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     
+    
+    let model = CountOnMeModel()
+    // View Life cycles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        model.delegate = self
+        model.downloadData()
+    }
     var elements: [String] {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
@@ -33,12 +41,7 @@ class ViewController: UIViewController {
         return textView.text.firstIndex(of: "=") != nil
     }
     
-    // View Life cycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
+
     
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
@@ -109,4 +112,8 @@ class ViewController: UIViewController {
         textView.text.append(" = \(operationsToReduce.first!)")
     }
 }
-
+extension ViewController: ModelDelegate {
+    func didReceiveData(_ data: String) {
+        print(data)
+    }
+}
