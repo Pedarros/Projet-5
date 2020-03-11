@@ -47,6 +47,23 @@ return textView.text.split(separator: " ").map { "\($0)" }
     operationsToReduce.insert("\(result)", at: 0)
     }
     
+    
+    
+    func Results() {
+        if Operands == "x" {
+            Multiply(a: <#T##Int#>, b: <#T##Int#>)
+        }
+        else if Operands == "/" {
+            Divide(a: <#T##Int#>, b: <#T##Int#>)
+        }
+        else if Operands == "+" {
+            Plus(a: <#T##Int#>, b: <#T##Int#>)
+        }
+        else if Operands == "-" {
+            Minus(a: <#T##Int#>, b: <#T##Int#>)
+        }
+    }
+    
     func Multiply (a: Int, b: Int) -> Int {
         return a * b
     }
@@ -66,12 +83,13 @@ return textView.text.split(separator: " ").map { "\($0)" }
         result = 0
     }
     
-    func Equal() {
-        if Multiply(a: <#T##Int#>, b: <#T##Int#>) = String(a * b)
-    }
+
     
-    func Operands (a: Float, b: Float) -> Float {
-        if Multiply(a: <#T##Int#>, b: <#T##Int#>) {
+    enum Operands : String {
+        case minus = "-"
+        case plus = "+"
+        case divide = "/"
+        case multiplu = "x"
             
         }
     
