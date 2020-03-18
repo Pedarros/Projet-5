@@ -50,17 +50,17 @@ return textView.text.split(separator: " ").map { "\($0)" }
     
     
     func Results() {
-        if Operands == "x" {
-            Multiply(a: <#T##Int#>, b: <#T##Int#>)
+        if Operands.multiply {
+          result =  Multiply(a: <#T##Int#>, b: <#T##Int#>)
         }
-        else if Operands == "/" {
-            Divide(a: <#T##Int#>, b: <#T##Int#>)
+        else if Operands.divide {
+           result = Divide(a: <#T##Int#>, b: <#T##Int#>)
         }
-        else if Operands == "+" {
-            Plus(a: <#T##Int#>, b: <#T##Int#>)
+        else if Operands.plus {
+          result =  Plus(a: <#T##Int#>, b: <#T##Int#>)
         }
-        else if Operands == "-" {
-            Minus(a: <#T##Int#>, b: <#T##Int#>)
+        else if Operands.minus {
+          result =  Minus(a: <#T##Int#>, b: <#T##Int#>)
         }
     }
     
@@ -83,13 +83,18 @@ return textView.text.split(separator: " ").map { "\($0)" }
         result = 0
     }
     
+    // Méthode qui récupère ce qui va être afficher dans le champ de texte
+    
+    // Méthode quand il clique sur égal
+    
+    
 
     
     enum Operands : String {
         case minus = "-"
         case plus = "+"
         case divide = "/"
-        case multiplu = "x"
+        case multiply = "x"
             
         }
     
