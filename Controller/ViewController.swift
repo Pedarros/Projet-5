@@ -13,26 +13,27 @@ class ViewController: UIViewController {
     @IBOutlet var numberButtons: [UIButton]!
     
     
-    let model = CountOnMeModel()
+   // let model = CountOnMeModel()
     // View Life cycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        model.delegate = self
-        model.downloadData()
-    }
+  
+  //      model.delegate = self
+    //    model.downloadData()
+    
+    
     
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
-        guard let numberText = sender.title(for: .normal) else {
-            return
-        }
-        
-        if expressionHaveResult {
-            textView.text = ""
-        }
-        
-        textView.text.append(numberText)
+        textView.text = textView.text! + String(sender.tag-1)
     }
+override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
        
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
     @IBAction func tappedEqualButton(_ sender: UIButton) {
        
     }
-        
+   /*
         // Create local copy of operations
         var operationsToReduce = elements
         
@@ -73,4 +74,6 @@ extension ViewController: ModelDelegate {
     func didReceiveData(_ data: String) {
         print(data) // textview.text = data
     }
+}
+*/
 }

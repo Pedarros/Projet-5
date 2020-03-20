@@ -1,66 +1,22 @@
  
- class CountOnMeModel {
+class CountOnMeModel {
 
-    weak var delegate: ModelDelegate?
-    func downloadData() {
-        let data = "Network request information."
-        delegate?.didReceiveData(data)
+    var results = 0.0
+    
+    func ErrorMessage() {
+        print("Erreur")
     }
     
-var elements: [String] {
-return textView.text.split(separator: " ").map { "\($0)" }
-    }
- // Error check computed variables
- var expressionIsCorrect: Bool {
-    return elements.last != "+" && elements.last != "-"
- }
- 
- var expressionHaveEnoughElement: Bool {
-    return elements.count >= 3
- }
- 
- var canAddOperator: Bool {
-    return elements.last != "+" && elements.last != "-"
- }
- 
- var expressionHaveResult: Bool {
-    return textView.text.firstIndex(of: "=") != nil
+    func setOperand (operand : Double) {
+        results = operand
     }
     
-    // Create local copy of operations
-    var operationsToReduce = elements
-    
-    // Iterate over operations while an operand still here
-    while operationsToReduce.count > 1 {
-    let left = Int(operationsToReduce[0])!
-    let operand = operationsToReduce[1]
-    let right = Int(operationsToReduce[2])!
-    
-    let result: Int
-    switch operand {
-    case "+": result = left + right
-    case "-": result = left - right
-    default: fatalError("Unknown operator !")
+    func performOperations (symbol : String) {
     }
     
-    operationsToReduce = Array(operationsToReduce.dropFirst(3))
-    operationsToReduce.insert("\(result)", at: 0)
-    }
-    
-    
-    
-    func Results() {
-        if Operands.multiply {
-          result =  Multiply(a: <#T##Int#>, b: <#T##Int#>)
-        }
-        else if Operands.divide {
-           result = Divide(a: <#T##Int#>, b: <#T##Int#>)
-        }
-        else if Operands.plus {
-          result =  Plus(a: <#T##Int#>, b: <#T##Int#>)
-        }
-        else if Operands.minus {
-          result =  Minus(a: <#T##Int#>, b: <#T##Int#>)
+    var result : Double {
+        get {
+            return results
         }
     }
     
@@ -68,7 +24,11 @@ return textView.text.split(separator: " ").map { "\($0)" }
         return a * b
     }
     func Divide (a: Int, b: Int) -> Int {
-        return a / b
+       
+        if a == 0 || b == 0 {
+             ErrorMessage()
+        } else {
+         return a / b
     }
     func Plus (a: Int, b: Int) -> Int {
         return a + b
@@ -77,15 +37,8 @@ return textView.text.split(separator: " ").map { "\($0)" }
         return a - b
     }
     
-    var result : Int = 0
+ 
     
-    func Reset() {
-        result = 0
-    }
-    
-    // Méthode qui récupère ce qui va être afficher dans le champ de texte
-    
-    // Méthode quand il clique sur égal
     
     
 
@@ -109,6 +62,7 @@ return textView.text.split(separator: " ").map { "\($0)" }
     
     if minus {
     */
-    }
  
  
+ 
+ }
