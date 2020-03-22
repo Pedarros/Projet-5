@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol getCalculDelegate {
+    func equal()
+    func reset()
+    func operands()
+}
+
 class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     
+    var delegate : getCalculDelegate
     
    // let model = CountOnMeModel()
     // View Life cycles
@@ -45,6 +52,10 @@ override func viewDidLoad() {
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
        
+    }
+    
+    @objc func giveTheResult() {
+        delegate.equal()
     }
    /*
         // Create local copy of operations

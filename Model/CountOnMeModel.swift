@@ -29,6 +29,7 @@ class CountOnMeModel {
              ErrorMessage()
         } else {
          return a / b
+        }
     }
     func Plus (a: Int, b: Int) -> Int {
         return a + b
@@ -52,17 +53,17 @@ class CountOnMeModel {
         }
     
     }
-    /*
-    enum Operation {
-        case minus
-        case plus
-        case multiply
-        case divide
-        }
+ extension CountOnMeModel : getCalculDelegate {
+    func equal() {
+        print(results)
+    }
     
-    if minus {
-    */
- 
- 
- 
+    func reset() {
+        print(0)
+    }
+    
+    func operands() {
+        print(Operands.self)
+    } 
  }
+ 
