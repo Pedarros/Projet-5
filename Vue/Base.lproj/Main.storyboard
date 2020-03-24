@@ -66,6 +66,7 @@
                                         </state>
                                         <connections>
                                             <action selector="tappedAdditionButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="V0J-eg-vQK"/>
+                                            <action selector="tappedResetButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="Soo-p1-cO5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -232,6 +233,9 @@
                                         <state key="normal" title="÷">
                                             <color key="titleColor" red="0.94109421969999996" green="0.94122928380000004" blue="0.9410645366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedOperandsWith_sender:" destination="eqK-jh-KKu" eventType="touchUpInside" id="EQf-Wo-eAk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5J-j1-r6U">
                                         <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="100"/>
@@ -240,6 +244,9 @@
                                         <state key="normal" title="×">
                                             <color key="titleColor" red="0.94109421969999996" green="0.94122928380000004" blue="0.9410645366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedOperandsWith_sender:" destination="eqK-jh-KKu" eventType="touchUpInside" id="FYl-d6-kct"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yku-O8-Z2a">
                                         <rect key="frame" x="206.99999999999997" y="0.0" width="103.66666666666666" height="100"/>
@@ -248,6 +255,9 @@
                                         <state key="normal" title="-">
                                             <color key="titleColor" red="0.94109421969999996" green="0.94122928380000004" blue="0.9410645366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedOperandsWith_sender:" destination="eqK-jh-KKu" eventType="touchUpInside" id="mno-ux-vLD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLp-MS-rXq">
                                         <rect key="frame" x="310.66666666666669" y="0.0" width="103.33333333333331" height="100"/>
@@ -256,6 +266,9 @@
                                         <state key="normal" title="+">
                                             <color key="titleColor" red="0.94109421969999996" green="0.94122928380000004" blue="0.9410645366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedOperandsWith_sender:" destination="eqK-jh-KKu" eventType="touchUpInside" id="KyO-uC-aoP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

@@ -15,8 +15,8 @@ protocol getCalculDelegate {
 }
 
 class ViewController: UIViewController {
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet var numberButtons: [UIButton]!
+    @IBOutlet weak var textView: UILabel!
+    @IBOutlet var numberButtons: UIButton!
     
     var delegate : getCalculDelegate
     
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         textView.text = textView.text! + String(sender.tag-1)
+        numberButtons = Double(textView.text!)
     }
 override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,17 +43,18 @@ override func viewDidLoad() {
     }
     
     
-    @IBAction func tappedAdditionButton(_ sender: UIButton) {
-       
-    }
-    
-    @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-       
+    @IBAction func tappedOperands(_sender: UIButton) {
+        
     }
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
        
     }
+
+    @IBAction func tappedResetButton(_ sender: Any) {
+        
+    }
+    
     
     @objc func giveTheResult() {
         delegate.equal()

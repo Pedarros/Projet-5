@@ -24,13 +24,14 @@ class CountOnMeModel {
         return a * b
     }
     func Divide (a: Int, b: Int) -> Int {
-       
+        
         if a == 0 || b == 0 {
-             ErrorMessage()
+            ErrorMessage()
         } else {
-         return a / b
-        }
+            return a / b
+        } 
     }
+    
     func Plus (a: Int, b: Int) -> Int {
         return a + b
     }
@@ -52,7 +53,8 @@ class CountOnMeModel {
             
         }
     
-    }
+    
+ }
  extension CountOnMeModel : getCalculDelegate {
     func equal() {
         print(results)
