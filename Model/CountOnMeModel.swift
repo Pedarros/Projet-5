@@ -8,7 +8,10 @@
     
     var elements : [String] = []
     var delegate: ShowDelegate?
-    
+    var opperands : [String] = []
+    var operations : [String] = [
+    "-" = 
+    ]
     func ErrorMessage() {
         print("Erreur")
     }
@@ -16,17 +19,30 @@
     var results: String {
         return elements.joined().replacingOccurrences(of: ".0", with: "")
     }
+    /*
+    var setOp : String {
+        
+     return opperands.joined().replacingOccurrences(of: "", with: "") } */
+    
     
     func reset() {
         elements.removeAll()
+        numberButton(number: "")
         delegate?.setDisplay(text: results)
     }
     
-    func setOperand (operand : Double) {
-       
+    func setOperand (operands : String) {
+        
+        opperands.append(operands)
+        
+        
+        delegate?.setDisplay(text: operands)
+            
     }
     
-    func performOperations (symbol : String) {
+    func performOperations (symbol : String, _: Operands) {
+        
+        
     }
     
     func numberButton(number: String) {
@@ -37,11 +53,11 @@
         delegate?.setDisplay(text: results)
     }
     
-    func Multiply (a: Int, b: Int) -> Int {
+    func Multiply (a: Double, b: Double) -> Double {
         return a * b
     }
     
-    func Divide (a: Int, b: Int) -> Int {
+    func Divide (a: Double, b: Double) -> Double {
         
         if a == 0 || b == 0 {
             ErrorMessage()
@@ -51,21 +67,19 @@
         }
     }
     
-    func Plus (a: Int, b: Int) -> Int {
+    func Plus (a: Double, b: Double) -> Double {
         return a + b
     }
-    func Minus (a: Int, b: Int) -> Int {
+    func Minus (a: Double, b: Double) -> Double {
         return a - b
     }
     
     enum Operands : String {
         case minus = "-"
         case plus = "+"
-        case divide = "/"
-        case multiply = "x"
-        
+        case multiply = "×"
+        case divide = "÷"
     }
-    
     
  }
  

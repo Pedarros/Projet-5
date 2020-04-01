@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var textView: UILabel!
     @IBOutlet var numberButtons: UIButton!
+    @IBOutlet var operators: UIButton!
+    
     
     let model = CountOnMeModel()
     // View actions
@@ -28,8 +30,10 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func tappedOperands(_sender: UIButton) {
-       
+    @IBAction func tappedOperands(_ sender: UIButton) {
+        guard let operands = sender.title(for: .normal) else { return }
+        model.setOperand(operands: operands) 
+        
     }
     
     @IBAction func tappedEqualButton(_ sender: UIButton) {
