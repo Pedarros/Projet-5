@@ -1,4 +1,6 @@
- 
+import Foundation
+
+
  protocol ShowDelegate: class {
     func setDisplay(text: String)
     func presentAlert()
@@ -8,10 +10,8 @@
     
     var elements : [String] = []
     var delegate: ShowDelegate?
-    var opperands : [String] = []
-    var operations : [String] = [
-    "-" = 
-    ]
+
+    var operations : [String] = []
     func ErrorMessage() {
         print("Erreur")
     }
@@ -19,67 +19,61 @@
     var results: String {
         return elements.joined().replacingOccurrences(of: ".0", with: "")
     }
-    /*
-    var setOp : String {
+  
+    func TwoOppImpossible() {
         
-     return opperands.joined().replacingOccurrences(of: "", with: "") } */
-    
+        if elements.last == "-" {
+           delegate?.presentAlert()
+        }
+        if elements.last == "+" {
+            delegate?.presentAlert()
+        }
+        if elements.last == "*" {
+            delegate?.presentAlert()
+        }
+        if elements.last == "/" {
+            delegate?.presentAlert()
+        }
+     
+    }
     
     func reset() {
         elements.removeAll()
-        numberButton(number: "")
+        elements.append("0")
         delegate?.setDisplay(text: results)
     }
     
     func setOperand (operands : String) {
         
-        opperands.append(operands)
-        
-        
-        delegate?.setDisplay(text: operands)
+        elements.append(operands)
+        TwoOppImpossible()
+        delegate?.setDisplay(text: results)
             
     }
     
-    func performOperations (symbol : String, _: Operands) {
+    func performOperations () {
+       
+            let mathExpression = NSExpression(format: "\(elements.joined())")
+            var result = mathExpression.expressionValue(with: nil, context: nil) as? Double
+            result = round(100 * result!)/100
+            elements.append("=")
+            elements.append("\(result!)")
+            print(elements)
         
+        delegate?.setDisplay(text: results)
         
     }
     
     func numberButton(number: String) {
         //If a result is displayed, tapping a number starts a new expression:
-        
+        if elements.first == "0" {
+            elements.removeFirst()
+        }
         elements.append(number)
-        
+        // Regarder si le premier élement de tableau est égal à 0 => supprimer le 0 
         delegate?.setDisplay(text: results)
     }
     
-    func Multiply (a: Double, b: Double) -> Double {
-        return a * b
-    }
-    
-    func Divide (a: Double, b: Double) -> Double {
-        
-        if a == 0 || b == 0 {
-            ErrorMessage()
-            return 0
-        } else {
-            return a / b
-        }
-    }
-    
-    func Plus (a: Double, b: Double) -> Double {
-        return a + b
-    }
-    func Minus (a: Double, b: Double) -> Double {
-        return a - b
-    }
-    
-    enum Operands : String {
-        case minus = "-"
-        case plus = "+"
-        case multiply = "×"
-        case divide = "÷"
-    }
     
  }
  

@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-      
+      model.performOperations()
     }
     
     @IBAction func tappedResetButton(_ sender: Any) {
