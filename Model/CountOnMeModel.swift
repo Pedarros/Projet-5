@@ -20,23 +20,13 @@ import Foundation
         return elements.joined().replacingOccurrences(of: ".0", with: "")
     }
   
-    func TwoOppImpossible() {
+    var isLastElementNotAnOperand: Bool {
         
-        if elements.last == "-" {
-           delegate?.presentAlert()
-        }
-        if elements.last == "+" {
-            delegate?.presentAlert()
-        }
-        if elements.last == "*" {
-            delegate?.presentAlert()
-        }
-        if elements.last == "/" {
-            delegate?.presentAlert()
-        }
-     
+        return (elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/")
+        
     }
     
+
     func reset() {
         elements.removeAll()
         elements.append("0")
@@ -45,9 +35,15 @@ import Foundation
     
     func setOperand (operands : String) {
         
+        if isLastElementNotAnOperand {
         elements.append(operands)
-        TwoOppImpossible()
         delegate?.setDisplay(text: results)
+        } else {
+            
+            delegate?.presentAlert()
+        }
+        
+        
             
     }
     
@@ -74,6 +70,7 @@ import Foundation
         delegate?.setDisplay(text: results)
     }
     
+    var operands : [String] = ["-", "/", "*", "+"]
     
  }
  
