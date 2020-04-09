@@ -10,23 +10,17 @@ import Foundation
     
     var elements : [String] = []
     var delegate: ShowDelegate?
-
     var operations : [String] = []
-    func ErrorMessage() {
-        print("Erreur")
-    }
-    
-    var results: String {
+    var results: String
+    {
         return elements.joined().replacingOccurrences(of: ".0", with: "")
     }
-  
-    var isLastElementNotAnOperand: Bool {
-        
+    var isLastElementNotAnOperand: Bool
+    {
         return (elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/")
-        
     }
     
-
+    
     func reset() {
         elements.removeAll()
         elements.append("0")
@@ -34,30 +28,23 @@ import Foundation
     }
     
     func setOperand (operands : String) {
-        
         if isLastElementNotAnOperand {
         elements.append(operands)
         delegate?.setDisplay(text: results)
         } else {
-            
             delegate?.presentAlert()
         }
-        
-        
-            
     }
     
     func performOperations () {
-       
-            let mathExpression = NSExpression(format: "\(elements.joined())")
-            var result = mathExpression.expressionValue(with: nil, context: nil) as? Double
+        let mathExpression = NSExpression(format: "\(elements.joined())")
+        var result = mathExpression.expressionValue(with: nil, context: nil) as? Double
             result = round(100 * result!)/100
             elements.append("=")
             elements.append("\(result!)")
             print(elements)
         
         delegate?.setDisplay(text: results)
-        
     }
     
     func numberButton(number: String) {
@@ -70,7 +57,7 @@ import Foundation
         delegate?.setDisplay(text: results)
     }
     
-    var operands : [String] = ["-", "/", "*", "+"]
+    
     
  }
  
