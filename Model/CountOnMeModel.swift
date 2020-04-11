@@ -50,14 +50,14 @@ import Foundation
     func numberButton(number: String) {
         //If a result is displayed, tapping a number starts a new expression:
         if elements.first == "0" {
-            elements.removeFirst()
+           elements.removeFirst()
         }
         elements.append(number)
         // Regarder si le premier élement de tableau est égal à 0 => supprimer le 0 
         delegate?.setDisplay(text: results)
     }
     
-    
+ 
     
  }
  
