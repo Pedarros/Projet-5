@@ -8,6 +8,7 @@ import Foundation
  
  class CountOnMeModel {
     
+    
     var elements : [String] = []
     var delegate: ShowDelegate?
     var operations : [String] = []
@@ -19,7 +20,10 @@ import Foundation
     {
         return (elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/")
     }
-    
+    var zeroIsFirst : Bool
+    {
+        return (elements.first == "0" )
+    }
     
     func reset() {
         elements.removeAll()
@@ -36,6 +40,8 @@ import Foundation
         }
     }
     
+    
+    
     func performOperations () {
         let mathExpression = NSExpression(format: "\(elements.joined())")
         var result = mathExpression.expressionValue(with: nil, context: nil) as? Double
@@ -49,7 +55,7 @@ import Foundation
     
     func numberButton(number: String) {
         //If a result is displayed, tapping a number starts a new expression:
-        if elements.first == "0" {
+        if zeroIsFirst {
            elements.removeFirst()
         }
         elements.append(number)
