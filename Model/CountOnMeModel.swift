@@ -11,7 +11,6 @@ import Foundation
     
     var elements : [String] = []
     var delegate: ShowDelegate?
-    var operations : [String] = []
     var results: String
     {
         return elements.joined().replacingOccurrences(of: ".0", with: "")
@@ -24,6 +23,27 @@ import Foundation
     {
         return (elements.first == "0" )
     }
+    
+    var operationsToReduce = [elements]
+    
+    while operationsToReduce > 1 {
+    let left = Int(operationsToReduce[0])!
+    let operand = operationsToReduce[1]
+    let right = Int(operationsToReduce[2])!
+    
+    let result: Int
+    switch operand {
+    case "+": result = left + right
+    case "-": result = left - right
+    case "÷": result = left / right
+    case "×": result = left * right
+    default: fatalError("Unknown operator !")
+    }
+    
+    operationsToReduce = Array(operationsToReduce.dropFirst(3))
+    operationsToReduce.insert("\(result)", at: 0)
+    }
+
     
     func reset() {
         elements.removeAll()
@@ -58,6 +78,7 @@ import Foundation
         if zeroIsFirst {
            elements.removeFirst()
         }
+
         elements.append(number)
         // Regarder si le premier élement de tableau est égal à 0 => supprimer le 0 
         delegate?.setDisplay(text: results)
