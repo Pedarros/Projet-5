@@ -24,9 +24,11 @@ import Foundation
         return (elements.first == "0" )
     }
     
-    var operationsToReduce = [elements]
+    func performOperations() {
+        
+    var operationsToReduce = elements
     
-    while operationsToReduce > 1 {
+    while operationsToReduce.count > 1 {
     let left = Int(operationsToReduce[0])!
     let operand = operationsToReduce[1]
     let right = Int(operationsToReduce[2])!
@@ -43,7 +45,15 @@ import Foundation
     operationsToReduce = Array(operationsToReduce.dropFirst(3))
     operationsToReduce.insert("\(result)", at: 0)
     }
+        elements.append("=")
+        
+        elements.append("\(operationsToReduce[0])")
+ 
 
+        delegate?.setDisplay(text: results)
+        
+    }
+    
     
     func reset() {
         elements.removeAll()
@@ -61,7 +71,7 @@ import Foundation
     }
     
     
-    
+    /*
     func performOperations () {
         let mathExpression = NSExpression(format: "\(elements.joined())")
         var result = mathExpression.expressionValue(with: nil, context: nil) as? Double
@@ -71,7 +81,7 @@ import Foundation
             print(elements)
         
         delegate?.setDisplay(text: results)
-    }
+    }*/
     
     func numberButton(number: String) {
         //If a result is displayed, tapping a number starts a new expression:

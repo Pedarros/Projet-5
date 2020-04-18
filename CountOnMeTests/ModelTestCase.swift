@@ -25,7 +25,7 @@ class ModelTestCase: XCTestCase {
         addElementToElements("4")
         model.reset()
         
-        XCTAssertTrue(model.elements == ["0"])
+        XCTAssert(model.results == "0")
     }
     func testGivenAddition_WhenAdditionIsTapped_ThenAdditionShouldBePerformed() {
         addElementToElements("5")
@@ -33,7 +33,15 @@ class ModelTestCase: XCTestCase {
         addElementToElements("5")
         model.performOperations()
         
-        XCTAssertTrue(model.elements == ["5+5=10"])
+        XCTAssert(model.results == "5+5=10")
+    }
+    func testGivenSubstraction_WhenSubstractionIsTapped_ThenSubstractionShouldBePerformed() {
+        addElementToElements("6")
+        addElementToElements("-")
+        addElementToElements("2")
+        model.performOperations()
+        
+        XCTAssert(model.results == "6-2=4")
     }
     
     func testGivenZeroCanNotBeFirst_WhenThereIsAZeroInFirstPosition_ThenTheZeroIsRemove() {
@@ -41,21 +49,21 @@ class ModelTestCase: XCTestCase {
         addElementToElements("2")
         model.elements = ["2"]
         
-        XCTAssertTrue(true)
+        XCTAssert(model.results == "2")
     }
     func testGivenMultiplication_WhenMultiplyIsTapped_ThenMultiplyShouldBePerformed() {
         addElementToElements("4")
-        addElementToElements("*")
+        addElementToElements("×")
         addElementToElements("2")
         
-        XCTAssert(model.results == "8")
+        XCTAssert(model.results == "4×2=8")
     }
     func testGivenDivide_WhenDivideIsTapped_ThenDivideShouldBePerformed() {
         addElementToElements("8")
-        addElementToElements("/")
+        addElementToElements("÷")
         addElementToElements("2")
         
-        XCTAssert(model.results == "4")
+        XCTAssert(model.results == "8÷2=4")
     }
     func testGivenTwentySix_WhenTwoAndSixAreTapped_ThenTwentySixShouldBeDisplayed() {
         addElementToElements("2")

@@ -226,7 +226,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="94" height="100"/>
                                         <color key="backgroundColor" red="0.70319191064381648" green="0.67397645057511668" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                        <state key="normal" title="/">
+                                        <state key="normal" title="÷">
                                             <color key="titleColor" red="0.94109421969999996" green="0.94122928380000004" blue="0.9410645366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -237,7 +237,7 @@
                                         <rect key="frame" x="94" y="0.0" width="93.5" height="100"/>
                                         <color key="backgroundColor" red="1" green="0.59764149446343262" blue="0.90173772207496228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                        <state key="normal" title="*">
+                                        <state key="normal" title="×">
                                             <color key="titleColor" red="0.94109421969999996" green="0.94122928380000004" blue="0.9410645366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>

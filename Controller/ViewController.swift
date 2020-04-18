@@ -45,9 +45,7 @@ class ViewController: UIViewController {
     }
     
     
-    @objc func giveTheResult() {
-        
-    }
+    
 }
 
 extension ViewController: ShowDelegate {
