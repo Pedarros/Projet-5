@@ -33,7 +33,7 @@ import Foundation
     // Determine which operands it is and perform the operation
     func performOperations () {
         
-        var operationsToReduce = elements
+       var operationsToReduce = results.split(separator: " ").map { "\($0)" }
         
         while operationsToReduce.count > 1 {
             
@@ -47,13 +47,18 @@ import Foundation
                 
             case "+": result = left + right
             case "-": result = left - right
-            case "/": result = left / right
-            case "*": result = left * right
-                
+            case "÷": result = left / right
+            case "×": result = left * right
+            
             default: fatalError("Unknown operator !")
                 
             }
             
+            if operationsToReduce[0] == "0" || operationsToReduce[2] == "0" && operand == "/" {
+                reset()
+             delegate?.presentAlert()
+             
+            }
             //
             
             operationsToReduce = Array(operationsToReduce.dropFirst(3))
@@ -66,7 +71,7 @@ import Foundation
         elements.append("=")
         // Print the first index
         elements.append("\(operationsToReduce[0])")
-      
+        
    
         delegate?.setDisplay(text: results)
         
@@ -84,8 +89,9 @@ import Foundation
         
         // Check if the last operand is not an operand, if it is, present alert is displayed
         if isLastElementNotAnOperand {
-        elements.append(operands)
-        delegate?.setDisplay(text: results)
+            
+            elements.append(" "+operands+" ")
+            delegate?.setDisplay(text: results)
         } else {
             delegate?.presentAlert()
         }
@@ -99,6 +105,9 @@ import Foundation
         //Check if zero is the first one, if it is, it removes it
         if zeroIsFirst {
            elements.removeFirst()
+        }
+        if elements.count >= 5 {
+            reset()
         }
 
         elements.append(number)
