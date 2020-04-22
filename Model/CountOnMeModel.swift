@@ -68,7 +68,7 @@ import Foundation
             
         }
         // Add "="
-        elements.append("=")
+        elements.append(" = ")
         // Print the first index
         elements.append("\(operationsToReduce[0])")
         
@@ -106,10 +106,7 @@ import Foundation
         if zeroIsFirst {
            elements.removeFirst()
         }
-        if elements.count >= 5 {
-            reset()
-        }
-        
+    
 
         elements.append(number)
         

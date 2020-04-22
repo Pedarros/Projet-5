@@ -29,11 +29,11 @@ class ModelTestCase: XCTestCase {
     }
     func testGivenAddition_WhenAdditionIsTapped_ThenAdditionShouldBePerformed() {
         addElementToElements("5")
-        addElementToElements("+")
+        addElementToElements(" + ")
         addElementToElements("5")
         model.performOperations()
         
-        XCTAssertTrue(model.results == "5+5=10 ")
+        XCTAssertTrue(model.elements == ["5", " + ", "5", " = ", "10"])
     }
     func testGivenSubstraction_WhenSubstractionIsTapped_ThenSubstractionShouldBePerformed() {
         addElementToElements("6")
@@ -41,7 +41,7 @@ class ModelTestCase: XCTestCase {
         addElementToElements("2")
         model.performOperations()
         
-        XCTAssert(model.results == "6 - 2 = 4")
+        XCTAssertTrue(model.elements == ["6"," - ","2"," = ","4"])
     }
     
     func testGivenZeroCanNotBeFirst_WhenThereIsAZeroInFirstPosition_ThenTheZeroIsRemove() {
