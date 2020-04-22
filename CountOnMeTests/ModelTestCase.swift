@@ -33,7 +33,7 @@ class ModelTestCase: XCTestCase {
         addElementToElements("5")
         model.performOperations()
         
-        XCTAssert(model.results == "5+5=10")
+        XCTAssertTrue(model.results == "5+5=10 ")
     }
     func testGivenSubstraction_WhenSubstractionIsTapped_ThenSubstractionShouldBePerformed() {
         addElementToElements("6")
@@ -41,7 +41,7 @@ class ModelTestCase: XCTestCase {
         addElementToElements("2")
         model.performOperations()
         
-        XCTAssert(model.results == "6-2=4")
+        XCTAssert(model.results == "6 - 2 = 4")
     }
     
     func testGivenZeroCanNotBeFirst_WhenThereIsAZeroInFirstPosition_ThenTheZeroIsRemove() {
@@ -56,19 +56,28 @@ class ModelTestCase: XCTestCase {
         addElementToElements("×")
         addElementToElements("2")
         
-        XCTAssert(model.results == "4×2=8")
+        XCTAssert(model.results == "4 × 2 = 8")
     }
     func testGivenDivide_WhenDivideIsTapped_ThenDivideShouldBePerformed() {
         addElementToElements("8")
         addElementToElements("÷")
         addElementToElements("2")
         
-        XCTAssert(model.results == "8÷2=4")
+        XCTAssert(model.results == "8 ÷ 2 = 4")
     }
     func testGivenTwentySix_WhenTwoAndSixAreTapped_ThenTwentySixShouldBeDisplayed() {
         addElementToElements("2")
         addElementToElements("6")
         
         XCTAssert(model.results == "26")
+    }
+    func testGivenNegativeResult_WhenGreaterNumberSubstratTheOther_ThenNegativeResultShouldHappened() {
+        addElementToElements("3")
+        addElementToElements("-")
+        addElementToElements("5")
+        
+        model.performOperations()
+        
+        XCTAssert(model.results == "3 - 5 = -2")
     }
 }

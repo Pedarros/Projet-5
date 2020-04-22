@@ -54,7 +54,7 @@ import Foundation
                 
             }
             
-            if operationsToReduce[0] == "0" || operationsToReduce[2] == "0" && operand == "/" {
+            if operationsToReduce[0] == "0" || operationsToReduce[2] == "0" && operand == "÷" {
                 reset()
              delegate?.presentAlert()
              
@@ -109,6 +109,7 @@ import Foundation
         if elements.count >= 5 {
             reset()
         }
+        
 
         elements.append(number)
         

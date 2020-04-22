@@ -55,11 +55,12 @@ extension ViewController: ShowDelegate {
     
 // Send an alert when some actions are not allowed
     func presentAlert() {
-        let alert = UIAlertController(title: "My Alert", message: "Error, you can't do that.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Alerte", message: "Erreur. Impossible de faire cela.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
+            NSLog("The \"OK\" alert occured.")  
         }))
         self.present(alert, animated: true, completion: nil)
+       
     
     }
     
