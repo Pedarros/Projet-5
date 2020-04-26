@@ -26,7 +26,28 @@ import Foundation
     // Check if the first element is not 0
     var zeroIsFirst : Bool
     {
-        return (elements.first == "0" )
+        return (elements.contains("÷ 0"))
+    }
+    var atLeastOneNumber: Bool {
+        if results >= "0" {
+            return elements.count >= 1
+        } else {
+            NotificationCenter.default.post(Notification(name: Notification.Name("error"), userInfo:
+                ["message": "Vous ne pouvez pas mettre un opérateur sans un nombre avant !"]))
+        }
+        return false
+    }
+    
+    
+    func PrioritizeOp() {
+        var priorityOp : [String] = ["×", "÷"]
+        let nonPriorityOp : [String] = ["-", "+"]
+        
+        if elements.count >= 5 {
+            nonPriorityOp.split(separator: " ")
+        }
+        
+        
     }
     
     
@@ -35,14 +56,14 @@ import Foundation
         
        var operationsToReduce = results.split(separator: " ").map { "\($0)" }
         
-        while operationsToReduce.count > 1 {
-            
+
         let operand = operationsToReduce[1]
         let left = Double(operationsToReduce[0])!
         
         let right = Double(operationsToReduce[2])!
         let result: Double
-            
+     
+     
         switch operand {
                 
             case "+": result = left + right
@@ -59,6 +80,8 @@ import Foundation
              delegate?.presentAlert()
              
             }
+        
+        
             //
             
             operationsToReduce = Array(operationsToReduce.dropFirst(3))
@@ -66,7 +89,7 @@ import Foundation
             operationsToReduce.insert("\(result)", at: 0)
             
             
-        }
+        
         // Add "="
         elements.append(" = ")
         // Print the first index
@@ -74,9 +97,9 @@ import Foundation
         
    
         delegate?.setDisplay(text: results)
-        
     }
     
+
     // everything is removed and then add a "0"
     func reset() {
         elements.removeAll()
@@ -84,6 +107,7 @@ import Foundation
         delegate?.setDisplay(text: results)
     }
     
+ 
     // Add operands
     func setOperand (operands : String) {
         
