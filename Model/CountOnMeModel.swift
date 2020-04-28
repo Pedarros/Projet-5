@@ -39,65 +39,57 @@ import Foundation
     }
     
     
-    func PrioritizeOp() {
-        var priorityOp : [String] = ["×", "÷"]
-        let nonPriorityOp : [String] = ["-", "+"]
-        
-        if elements.count >= 5 {
-            nonPriorityOp.split(separator: " ")
-        }
-        
-        
-    }
     
     
     // Determine which operands it is and perform the operation
     func performOperations () {
         
-       var operationsToReduce = results.split(separator: " ").map { "\($0)" }
-        
-
-        let operand = operationsToReduce[1]
-        let left = Double(operationsToReduce[0])!
-        
-        let right = Double(operationsToReduce[2])!
+        var index = 0
+        var operationsToReduce = results.split(separator: " ").map { "\($0)" }
+        while operationsToReduce.count > 1 {
+            let iscontainopp = operationsToReduce.contains("÷") || operationsToReduce.contains("×")
+            let operand = operationsToReduce[index+1]
+            if(iscontainopp && operand != "÷" && operand != "×"){
+                index += 2
+                continue
+            }
+            
+        let left = Double(operationsToReduce[index])!
+        let right = Double(operationsToReduce[index+2])!
         let result: Double
-     
-     
         switch operand {
-                
-            case "+": result = left + right
-            case "-": result = left - right
-            case "÷": result = left / right
-            case "×": result = left * right
-            
+        
+        case "+": result = left + right
+        case "-": result = left - right
+        case "÷": result = left / right
+        case "×": result = left * right
+        
             default: fatalError("Unknown operator !")
-                
+ 
             }
+     
+            operationsToReduce.remove(at: index)
+            operationsToReduce.remove(at: index)
+            operationsToReduce.remove(at: index)
+            operationsToReduce.insert("\(result)", at: index)
             
-            if operationsToReduce[0] == "0" || operationsToReduce[2] == "0" && operand == "÷" {
-                reset()
-             delegate?.presentAlert()
-             
-            }
-        
-        
-            //
-            
-            operationsToReduce = Array(operationsToReduce.dropFirst(3))
-            // put the result in the first index
-            operationsToReduce.insert("\(result)", at: 0)
+            index = 0
             
             
+        }
         
         // Add "="
         elements.append(" = ")
+        
         // Print the first index
         elements.append("\(operationsToReduce[0])")
         
-   
         delegate?.setDisplay(text: results)
+        
+        
+        
     }
+    
     
 
     // everything is removed and then add a "0"

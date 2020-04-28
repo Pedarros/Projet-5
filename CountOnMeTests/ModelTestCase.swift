@@ -117,4 +117,15 @@ class ModelTestCase: XCTestCase {
         
     }
     
+    func testGivenDivideByZero_WhenDivideByZero_ThenErrorShouldBeSent() {
+        addElementToElements("3")
+        addElementToElements("5")
+        addElementToElements("÷")
+        addElementToElements("0")
+        
+        model.performOperations()
+        
+        XCTAssert(((model.delegate?.presentAlert()) != nil))
+    }
+    
 }
