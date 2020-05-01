@@ -11,7 +11,7 @@ import Foundation
     
     // elements collects what is tapped on the ViewController
     var elements : [String] = []
-    // Allows to implement methods of the protocol
+    // Alloews to implement methods of the protocol
     var delegate: ShowDelegate?
     // When the result is displayed, if it's 2.0, it takes the ".0" of
     var results: String
@@ -26,7 +26,7 @@ import Foundation
     // Check if the first element is not 0
     var zeroIsFirst : Bool
     {
-        return (elements.contains("÷ 0"))
+        return (elements.first == "0" ) //&& elements.count > 1
     }
     var atLeastOneNumber: Bool {
         if results >= "0" {
@@ -38,7 +38,19 @@ import Foundation
         return false
     }
     
+    var isExpressionCorrect: Bool
+    {
+        
+        return (elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/") &&
+            
+            (results.contains("+") || results.contains("-") || results.contains("*") || results.contains("/"))
+    }
     
+    var isResultDisplayed : Bool
+    {
+        return results.contains("=")
+        
+    }
     
     
     // Determine which operands it is and perform the operation
@@ -114,18 +126,19 @@ import Foundation
     }
     
     
-
-    //
+  
+    // Fix a number
     func numberButton(number: String) {
-        
         //Check if zero is the first one, if it is, it removes it
         if zeroIsFirst {
            elements.removeFirst()
         }
-    
-
-        elements.append(number)
+        if isResultDisplayed {
+            reset()
+            elements.removeFirst()
+        }
         
+        elements.append(number)
         delegate?.setDisplay(text: results)
     }
     
