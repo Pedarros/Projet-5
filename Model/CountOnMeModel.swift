@@ -51,12 +51,31 @@ import Foundation
         return results.contains("=")
         
     }
+    var isDecimal : Bool
+    {
+        return elements.last?.firstIndex(of: ".") != nil
+    }
     
+    func addDecimal() {
+        if elements.count > 1 {
+            if !isDecimal {
+                elements.append(".")
+            } else {
+                NotificationCenter.default.post(Notification(name: Notification.Name("error"),
+                                                             userInfo: ["message": "Il s'agit déjà d'un décimal !"]))
+            }
+        } else {
+            elements.append("0.")
+        }
+    }
     
     // Determine which operands it is and perform the operation
     func performOperations () {
-        
+        if isResultDisplayed {
+            reset()
+        }
         var index = 0
+        // Separate every element in order to use operands priority
         var operationsToReduce = results.split(separator: " ").map { "\($0)" }
         while operationsToReduce.count > 1 {
             let iscontainopp = operationsToReduce.contains("÷") || operationsToReduce.contains("×")
