@@ -37,6 +37,21 @@ import Foundation
         }
         return false
     }
+    var currentNumber: String {
+        
+        var currentNumberArray: [String] = elements
+        var operandIndices = [Int]()
+        for element in currentNumberArray {
+            if (element == " + " || element == " - " || element == " * " || element == " / ") {
+                operandIndices.append(currentNumberArray.lastIndex(of: element)!)
+            }
+        }
+        if let operandIndex = operandIndices.max() {
+            let value = currentNumberArray[operandIndex]
+            currentNumberArray.removeSubrange(0...operandIndex)
+        }
+        return currentNumberArray.joined()
+    }
     
     var isExpressionCorrect: Bool
     {
@@ -52,9 +67,9 @@ import Foundation
         
     }
     var isDecimal : Bool
-    {
-        return elements.last?.firstIndex(of: ".") != nil
-    }
+        {
+        return currentNumber.contains(".")
+        }
     
     func addDecimal() {
         if elements.count > 1 {
