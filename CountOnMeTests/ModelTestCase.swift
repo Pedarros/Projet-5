@@ -20,7 +20,7 @@ class ModelTestCase: XCTestCase {
         addElementToElements("+")
         addElementToElements("-")
         
-        XCTAssertFalse(model.isLastElementNotAnOperand)
+        XCTAssertTrue(model.isLastElementNotAnOperand)
     }
     
     func testGivenDivideByZero_WhenTriesToDivideByZero_ErrorShouldBeSent() {
@@ -28,7 +28,9 @@ class ModelTestCase: XCTestCase {
         addElementToElements(" ÷ ")
         addElementToElements("0")
         model.reset()
-        XCTAssertTrue(model.OperqtionImpo)
+        
+       
+        XCTAssertFalse(model.OperqtionImpo)
     }
     
     // checks if 0 is printed when clear button is pressed
@@ -61,14 +63,7 @@ class ModelTestCase: XCTestCase {
         XCTAssertTrue(model.results == "6 - 2 = 4")
     }
     
-    // Check if 0 is first and if it is removed
-    func testGivenZeroCanNotBeFirst_WhenThereIsAZeroInFirstPosition_ThenTheZeroIsRemove() {
-        addElementToElements("0")
-        addElementToElements("2")
-        
-        
-        XCTAssert(model.results == "2")
-    }
+   
     
     // Check if Multiplication is performed
     func testGivenMultiplication_WhenMultiplyIsTapped_ThenMultiplyShouldBePerformed() {
@@ -121,19 +116,10 @@ class ModelTestCase: XCTestCase {
         
         model.performOperations()
         
-        XCTAssert(model.results == "5 + 53 - 5 ÷ 2 - 2 = 53,5")
+        XCTAssert(model.results == "5 + 53 - 5 ÷ 2 - 2 = 53.5")
         
     }
     
-    func testGivenDivideByZero_WhenDivideByZero_ThenErrorShouldBeSent() {
-        addElementToElements("3")
-        addElementToElements("5")
-        addElementToElements("÷")
-        addElementToElements("0")
-        
-        model.performOperations()
-        
-        XCTAssert(((model.delegate?.presentAlert()) != nil))
-    }
+    
     
 }
