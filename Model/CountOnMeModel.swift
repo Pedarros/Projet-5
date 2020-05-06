@@ -2,12 +2,12 @@ import Foundation
 
 // Protocol implemented from the ViewController
 
- protocol ShowDelegate: class {
+protocol ShowDelegate: class {
     func setDisplay(text: String)
     func presentAlert()
- }
- 
- class CountOnMeModel {
+}
+
+class CountOnMeModel {
     
     // elements collects what is tapped on the ViewController
     var elements : [String] = []
@@ -21,33 +21,38 @@ import Foundation
     // Check if the last element is not an operand
     var isLastElementNotAnOperand: Bool
     {
-        return (elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/")
+        return (elements.last != " + " && elements.last != " - " && elements.last != " × " && elements.last != " ÷ ")
     }
     // Check if the first element is not 0
     var zeroIsFirst : Bool
     {
         return (elements.first == "0" ) //&& elements.count > 1
     }
+    
+    var OperqtionImpo : Bool
+    {
+        return results.contains("÷ 0")
+    }
+    
     var atLeastOneNumber: Bool {
         if results >= "0" {
             return elements.count >= 1
         } else {
-            NotificationCenter.default.post(Notification(name: Notification.Name("error"), userInfo:
-                ["message": "Vous ne pouvez pas mettre un opérateur sans un nombre avant !"]))
+            delegate?.presentAlert()
         }
         return false
     }
+    
     var currentNumber: String {
         
         var currentNumberArray: [String] = elements
         var operandIndices = [Int]()
         for element in currentNumberArray {
-            if (element == " + " || element == " - " || element == " * " || element == " / ") {
+            if (element == " + " || element == " - " || element == " × " || element == " ÷ ") {
                 operandIndices.append(currentNumberArray.lastIndex(of: element)!)
             }
         }
         if let operandIndex = operandIndices.max() {
-            let value = currentNumberArray[operandIndex]
             currentNumberArray.removeSubrange(0...operandIndex)
         }
         return currentNumberArray.joined()
@@ -55,10 +60,7 @@ import Foundation
     
     var isExpressionCorrect: Bool
     {
-        
-        return (elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/") &&
-            
-            (results.contains("+") || results.contains("-") || results.contains("*") || results.contains("/"))
+        return  (isLastElementNotAnOperand && (results.contains(" + ") || results.contains(" - ") || results.contains(" × ") || results.contains(" ÷ ")))
     }
     
     var isResultDisplayed : Bool
@@ -67,77 +69,67 @@ import Foundation
         
     }
     var isDecimal : Bool
-        {
+    {
         return currentNumber.contains(".")
-        }
-    
-    func addDecimal() {
-        if elements.count > 1 {
-            if !isDecimal {
-                elements.append(".")
-            } else {
-                NotificationCenter.default.post(Notification(name: Notification.Name("error"),
-                                                             userInfo: ["message": "Il s'agit déjà d'un décimal !"]))
-            }
-        } else {
-            elements.append("0.")
-        }
     }
+    
     
     // Determine which operands it is and perform the operation
     func performOperations () {
         if isResultDisplayed {
             reset()
         }
-        var index = 0
-        // Separate every element in order to use operands priority
-        var operationsToReduce = results.split(separator: " ").map { "\($0)" }
-        while operationsToReduce.count > 1 {
-            let iscontainopp = operationsToReduce.contains("÷") || operationsToReduce.contains("×")
-            let operand = operationsToReduce[index+1]
-            if(iscontainopp && operand != "÷" && operand != "×"){
-                index += 2
-                continue
+        
+        if(OperqtionImpo || !isExpressionCorrect){
+            delegate?.presentAlert();
+        }else{
+            var index = 0
+            // Separate every element in order to use operands priority
+            var operationsToReduce = results.split(separator: " ").map { "\($0)" }
+            while operationsToReduce.count > 1 {
+                let iscontainopp = operationsToReduce.contains("÷") || operationsToReduce.contains("×")
+                let operand = operationsToReduce[index+1]
+                if(iscontainopp && operand != "÷" && operand != "×"){
+                    index += 2
+                    continue
+                }
+                
+                let left = Double(operationsToReduce[index])!
+                let right = Double(operationsToReduce[index+2])!
+                let result: Double
+                switch operand {
+                    
+                case "+": result = left + right
+                case "-": result = left - right
+                case "÷": result = left / right
+                case "×": result = left * right
+                    
+                default: fatalError("Unknown operator !")
+                    
+                }
+                
+                operationsToReduce.remove(at: index)
+                operationsToReduce.remove(at: index)
+                operationsToReduce.remove(at: index)
+                operationsToReduce.insert("\(result)", at: index)
+                
+                index = 0
+                
             }
             
-        let left = Double(operationsToReduce[index])!
-        let right = Double(operationsToReduce[index+2])!
-        let result: Double
-        switch operand {
-        
-        case "+": result = left + right
-        case "-": result = left - right
-        case "÷": result = left / right
-        case "×": result = left * right
-        
-            default: fatalError("Unknown operator !")
- 
-            }
-     
-            operationsToReduce.remove(at: index)
-            operationsToReduce.remove(at: index)
-            operationsToReduce.remove(at: index)
-            operationsToReduce.insert("\(result)", at: index)
+            // Add "="
+            elements.append(" = ")
             
-            index = 0
+            // Print the first index
+            elements.append("\(operationsToReduce[0])")
             
-            
+            delegate?.setDisplay(text: results)
         }
-        
-        // Add "="
-        elements.append(" = ")
-        
-        // Print the first index
-        elements.append("\(operationsToReduce[0])")
-        
-        delegate?.setDisplay(text: results)
-        
-        
         
     }
     
     
-
+    
     // everything is removed and then add a "0"
     func reset() {
         elements.removeAll()
@@ -145,7 +137,7 @@ import Foundation
         delegate?.setDisplay(text: results)
     }
     
- 
+    
     // Add operands
     func setOperand (operands : String) {
         
@@ -159,13 +151,15 @@ import Foundation
         }
     }
     
-    
-  
     // Fix a number
     func numberButton(number: String) {
+        // If there is already a point, can't put a point
+        if(isDecimal && number == "."){
+            return
+        }
         //Check if zero is the first one, if it is, it removes it
         if zeroIsFirst {
-           elements.removeFirst()
+            elements.removeFirst()
         }
         if isResultDisplayed {
             reset()
@@ -176,8 +170,6 @@ import Foundation
         delegate?.setDisplay(text: results)
     }
     
- 
-    
- }
- 
- 
+}
+
+

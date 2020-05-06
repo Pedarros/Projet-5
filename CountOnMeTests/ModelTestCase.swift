@@ -23,6 +23,14 @@ class ModelTestCase: XCTestCase {
         XCTAssertFalse(model.isLastElementNotAnOperand)
     }
     
+    func testGivenDivideByZero_WhenTriesToDivideByZero_ErrorShouldBeSent() {
+        addElementToElements("3")
+        addElementToElements(" ÷ ")
+        addElementToElements("0")
+        model.reset()
+        XCTAssertTrue(model.OperqtionImpo)
+    }
+    
     // checks if 0 is printed when clear button is pressed
     func testGivenClearPutAZero_WhenUserClears_ThenZeroIsHere() {
         addElementToElements("3")
