@@ -23,16 +23,7 @@ class ModelTestCase: XCTestCase {
         XCTAssertTrue(model.isLastElementNotAnOperand)
     }
     
-    func testGivenDivideByZero_WhenTriesToDivideByZero_ErrorShouldBeSent() {
-        addElementToElements("3")
-        addElementToElements(" ÷ ")
-        addElementToElements("0")
-        model.reset()
-        
-       
-        XCTAssertFalse(model.OperqtionImpo)
-    }
-    
+   
     // checks if 0 is printed when clear button is pressed
     func testGivenClearPutAZero_WhenUserClears_ThenZeroIsHere() {
         addElementToElements("3")
@@ -100,6 +91,17 @@ class ModelTestCase: XCTestCase {
         
         XCTAssertTrue(model.results == "3 - 5 = -2")
     }
+    
+    func testGivenDivideByZero_WhenTriesToDivideByZero_ErrorShouldBeSent() {
+        addElementToElements("3")
+        addElementToElements(" ÷ ")
+        addElementToElements("0")
+        model.reset()
+        
+        
+        XCTAssertFalse(model.OperqtionImpo)
+    }
+    
     
     // Check if the app is performing the calcul according to the priority rules
     func testGivenPriorityOp_WhenThereIsSeveralOp_ThenTheCalculationHasToBeWithPriority() {

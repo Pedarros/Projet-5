@@ -14,10 +14,6 @@
         <scene sceneID="BSq-PH-znu">
             <objects>
                 <viewController id="eqK-jh-KKu" customClass="ViewController" customModule="CountOnMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tQO-Y2-VWE"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fhl-dE-gDl"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eIh-hr-C95">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -279,24 +275,24 @@
                         <color key="backgroundColor" red="0.87536688539999996" green="0.84808511389999996" blue="0.83804947389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="isI-Gg-Iye" firstAttribute="top" secondItem="T2H-yn-nBB" secondAttribute="bottom" id="EjM-hL-YVq"/>
-                            <constraint firstItem="AWJ-Vl-uau" firstAttribute="trailing" secondItem="fKr-b5-EeV" secondAttribute="trailing" id="Lj9-mZ-349"/>
+                            <constraint firstItem="yKM-4b-eqd" firstAttribute="trailing" secondItem="fKr-b5-EeV" secondAttribute="trailing" id="Lj9-mZ-349"/>
                             <constraint firstItem="PNX-Q0-5P0" firstAttribute="top" secondItem="isI-Gg-Iye" secondAttribute="bottom" id="SUu-2X-9KM"/>
                             <constraint firstItem="fKr-b5-EeV" firstAttribute="top" secondItem="PNX-Q0-5P0" secondAttribute="bottom" id="UN1-e1-Z7L"/>
-                            <constraint firstItem="T2H-yn-nBB" firstAttribute="leading" secondItem="AWJ-Vl-uau" secondAttribute="leading" id="WA8-Ky-uuy"/>
+                            <constraint firstItem="T2H-yn-nBB" firstAttribute="leading" secondItem="yKM-4b-eqd" secondAttribute="leading" id="WA8-Ky-uuy"/>
                             <constraint firstItem="ogr-Aw-e1h" firstAttribute="leading" secondItem="PNX-Q0-5P0" secondAttribute="trailing" id="Wqh-ma-igX"/>
-                            <constraint firstItem="PNX-Q0-5P0" firstAttribute="leading" secondItem="AWJ-Vl-uau" secondAttribute="leading" id="Xkr-t2-6sS"/>
-                            <constraint firstItem="isI-Gg-Iye" firstAttribute="leading" secondItem="AWJ-Vl-uau" secondAttribute="leading" id="YPe-Hl-6l1"/>
-                            <constraint firstItem="T2H-yn-nBB" firstAttribute="top" secondItem="tQO-Y2-VWE" secondAttribute="bottom" id="cr2-l6-7Ac"/>
-                            <constraint firstItem="AWJ-Vl-uau" firstAttribute="trailing" secondItem="T2H-yn-nBB" secondAttribute="trailing" id="fdV-Tg-sjc"/>
+                            <constraint firstItem="PNX-Q0-5P0" firstAttribute="leading" secondItem="yKM-4b-eqd" secondAttribute="leading" id="Xkr-t2-6sS"/>
+                            <constraint firstItem="isI-Gg-Iye" firstAttribute="leading" secondItem="yKM-4b-eqd" secondAttribute="leading" id="YPe-Hl-6l1"/>
+                            <constraint firstItem="T2H-yn-nBB" firstAttribute="top" secondItem="yKM-4b-eqd" secondAttribute="top" id="cr2-l6-7Ac"/>
+                            <constraint firstItem="yKM-4b-eqd" firstAttribute="trailing" secondItem="T2H-yn-nBB" secondAttribute="trailing" id="fdV-Tg-sjc"/>
                             <constraint firstItem="ogr-Aw-e1h" firstAttribute="leading" secondItem="isI-Gg-Iye" secondAttribute="trailing" id="htZ-oU-dpt"/>
                             <constraint firstItem="6s8-JJ-mb2" firstAttribute="width" secondItem="Hkr-13-i1X" secondAttribute="width" id="mTQ-WC-eqp"/>
-                            <constraint firstItem="fKr-b5-EeV" firstAttribute="leading" secondItem="AWJ-Vl-uau" secondAttribute="leading" id="oXE-k2-bVM"/>
-                            <constraint firstItem="AWJ-Vl-uau" firstAttribute="trailing" secondItem="ogr-Aw-e1h" secondAttribute="trailing" id="su2-Pz-FDl"/>
+                            <constraint firstItem="fKr-b5-EeV" firstAttribute="leading" secondItem="yKM-4b-eqd" secondAttribute="leading" id="oXE-k2-bVM"/>
+                            <constraint firstItem="yKM-4b-eqd" firstAttribute="trailing" secondItem="ogr-Aw-e1h" secondAttribute="trailing" id="su2-Pz-FDl"/>
                             <constraint firstItem="fKr-b5-EeV" firstAttribute="top" secondItem="ogr-Aw-e1h" secondAttribute="bottom" id="vlp-pf-u74"/>
                             <constraint firstAttribute="bottom" secondItem="fKr-b5-EeV" secondAttribute="bottom" id="yCO-od-Sby"/>
                             <constraint firstItem="ogr-Aw-e1h" firstAttribute="top" secondItem="T2H-yn-nBB" secondAttribute="bottom" id="zaf-em-kZC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="AWJ-Vl-uau"/>
+                        <viewLayoutGuide key="safeArea" id="yKM-4b-eqd"/>
                     </view>
                     <connections>
                         <outlet property="textView" destination="T2H-yn-nBB" id="yqe-Yo-Sag"/>

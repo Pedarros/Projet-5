@@ -11,8 +11,8 @@
 		1FA43BD5224E569900F565CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BD4224E569900F565CB /* ViewController.swift */; };
 		1FA43BD8224E569900F565CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BD6224E569900F565CB /* Main.storyboard */; };
 		1FA43BDD224E569A00F565CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BDB224E569A00F565CB /* LaunchScreen.storyboard */; };
-		C397E19A2439E22500CDE9DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C397E1992439E22500CDE9DB /* Assets.xcassets */; };
 		C397E1BC243F7C9800CDE9DB /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397E1BB243F7C9800CDE9DB /* ModelTestCase.swift */; };
+		C3B711A52463FB990071C992 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3B711A42463FB990071C992 /* Assets.xcassets */; };
 		C3EE51E7240D15D5007F94B4 /* CountOnMeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE51E6240D15D5007F94B4 /* CountOnMeModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,10 +33,10 @@
 		1FA43BD7224E569900F565CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FA43BDC224E569A00F565CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FA43BDE224E569A00F565CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C397E1992439E22500CDE9DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Downloads/AppIcons (2)/Assets.xcassets"; sourceTree = "<group>"; };
 		C397E1B1243F7C2700CDE9DB /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C397E1B5243F7C2700CDE9DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C397E1BB243F7C9800CDE9DB /* ModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
+		C3B711A42463FB990071C992 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3EE51E6240D15D5007F94B4 /* CountOnMeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOnMeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +126,7 @@
 		C3EE51E52409726A007F94B4 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				C397E1992439E22500CDE9DB /* Assets.xcassets */,
+				C3B711A42463FB990071C992 /* Assets.xcassets */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = "Vincent Saluzzo";
+				ORGANIZATIONNAME = Emile;
 				TargetAttributes = {
 					1FA43BCE224E569900F565CB = {
 						CreatedOnToolsVersion = 10.2;
@@ -214,7 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA43BDD224E569A00F565CB /* LaunchScreen.storyboard in Resources */,
-				C397E19A2439E22500CDE9DB /* Assets.xcassets in Resources */,
+				C3B711A52463FB990071C992 /* Assets.xcassets in Resources */,
 				1FA43BD8224E569900F565CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,13 +397,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XD88S2KT2F;
 				INFOPLIST_FILE = "$(SRCROOT)/CountOnMe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vincentsaluzzo.CountOnMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emilepedarros.CountOnMe.Identifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -414,13 +416,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XD88S2KT2F;
 				INFOPLIST_FILE = "$(SRCROOT)/CountOnMe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vincentsaluzzo.CountOnMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emilepedarros.CountOnMe.Identifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
